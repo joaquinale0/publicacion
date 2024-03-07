@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main class="principal container pt-3 ">
+    {% if contenidos.count > 0 %}
+    {% for contenido in contenidos %}
+
+    <div class="card mb-3 contenido mx-auto " style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ contenido.imagen.url }}" class="img-fluid rounded-start" alt="Imagen de posters">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h4 class="card-title bg-body-tertiary"><b>Usuario:</b> {{ contenido.nombre }} {{ contenido.apellido }}</h4>
+                <h5 class="card-title">{{ contenido.tituloImg }}</h5>
+                <p class="card-text">{{ contenido.descripcion }}</p>
+                <p class="card-text"><small class="text-muted">{{ contenido.fechaCreada }}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% else %}
+    <section class="noPoster" >
+        <h1 class="warning">No hay Publicacion.</h1>
+    </section>
+    {% endif %}
+</main>
+
+
+{% endblock %}
